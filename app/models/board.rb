@@ -13,7 +13,7 @@ class Board < ApplicationRecord
   validates(:user_id, presence: true)
 
   def owner
-    user = User.where(id => self.user_id).at(0)
+    user = User.where(:id => self.user_id).at(0)
     return user
   end
 end
