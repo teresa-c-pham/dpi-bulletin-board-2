@@ -3,6 +3,7 @@
     <h1>
       <%= @the_board.name %>
     </h1>
+    <p>Owner: <%= @the_board.owner.email %></p>
   </div>
 </div>
 
@@ -11,7 +12,7 @@
 <h2>
   Add a new post
 </h2>
-
+<% if current_user != nil %>
 <form action="/insert_post" method="post">
   <div>
     <label for="title_box">
@@ -43,7 +44,9 @@
     Add post
   </button>
 </form>
-
+<% else %>
+  Must be <a href="/users/sign_in">signed in</a> to add a post.
+<% end %>
 <hr>
 
 <h2>Active posts</h2>
